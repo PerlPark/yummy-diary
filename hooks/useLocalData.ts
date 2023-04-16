@@ -15,7 +15,7 @@ const useLocalData = () => {
     localStorage.setItem('data', JSON.stringify(data));
   }, [data]);
 
-  return { data };
+  return data;
 };
 
 export default useLocalData;

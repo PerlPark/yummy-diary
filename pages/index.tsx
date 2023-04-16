@@ -8,7 +8,7 @@ dayjs.locale('ko');
 const pacifico = Pacifico({ weight: ['400'], subsets: ['latin'] });
 
 export default function Home() {
-  const { data } = useLocalData();
+  const data = useLocalData();
 
   const today = dayjs().format('YYYY/MM/DD (ddd)');
   const hasToday = data[0]?.date === today;
