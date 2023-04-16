@@ -2,16 +2,15 @@
 import items from '@/constants/items';
 import AddButton from './AddButton';
 import { useState } from 'react';
-import { LogItem } from '@/hooks/useGetLocalData';
+import { ItemType } from '@/hooks/useGetLocalData';
 import labels from '@/constants/labels';
 
 type AddModalPropsType = {
   date: string;
-  index: number;
 };
 
-const AddModal = ({ date, index }: AddModalPropsType) => {
-  const [selected, setSelected] = useState<LogItem>();
+const AddModal = ({ date }: AddModalPropsType) => {
+  const [selected, setSelected] = useState<ItemType>();
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-950/20 px-4 overflow-auto z-50">
@@ -43,7 +42,7 @@ const AddModal = ({ date, index }: AddModalPropsType) => {
                       <input
                         type="text"
                         value={
-                          selected.nutrition[key as keyof LogItem['nutrition']]
+                          selected.nutrition[key as keyof ItemType['nutrition']]
                         }
                         className="rounded bg-gray-100 px-3 py-1 text-sm w-24"
                       />

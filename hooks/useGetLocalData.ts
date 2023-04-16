@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 
-interface HeadlineItem {
-  isHeadline: true;
-  text: string;
-}
-
-export interface LogItem {
+export interface ItemType {
   isHeadline: false;
   image?: string;
   name: string;
@@ -19,11 +14,15 @@ export interface LogItem {
   };
 }
 
-export type ItemType = HeadlineItem | LogItem;
-
 interface Data {
   date: string;
-  items: ItemType[];
+  morning: ItemType[];
+  morningSnack: ItemType[];
+  lunch: ItemType[];
+  afternoonSnack: ItemType[];
+  midMeal: ItemType[];
+  dinner: ItemType[];
+  midnightSnack: ItemType[];
 }
 
 const useGetLocalData = () => {

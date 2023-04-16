@@ -3,7 +3,6 @@ import useGetLocalData from '@/hooks/useGetLocalData';
 import dayjs from 'dayjs';
 import { Pacifico } from 'next/font/google';
 import 'dayjs/locale/ko';
-import AddModal from '@/components/AddModal';
 dayjs.locale('ko');
 
 const pacifico = Pacifico({ weight: ['400'], subsets: ['latin'] });
@@ -23,7 +22,6 @@ export default function Home() {
         <h2 className="text-4xl font-semibold">먹었어요</h2>
         {!hasToday && <DailyItem date={today} isToday={true} />}
       </div>
-      <AddModal />
     </main>
   );
 }

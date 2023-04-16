@@ -1,16 +1,29 @@
 import { ItemType } from '@/hooks/useGetLocalData';
 import AddButton from './AddButton';
+import AddModal from './AddModal';
 
 type DailyItemPropsType = {
   date: string;
   isToday?: boolean;
-  data?: ItemType[];
+  morning?: ItemType[];
+  morningSnack?: ItemType[];
+  lunch?: ItemType[];
+  afternoonSnack?: ItemType[];
+  midMeal?: ItemType[];
+  dinner?: ItemType[];
+  midnightSnack?: ItemType[];
 };
 
 const DailyItem = ({
   date,
   isToday = false,
-  data = [],
+  morning = [],
+  morningSnack = [],
+  lunch = [],
+  afternoonSnack = [],
+  midMeal = [],
+  dinner = [],
+  midnightSnack = [],
 }: DailyItemPropsType) => {
   return (
     <div>
@@ -23,6 +36,7 @@ const DailyItem = ({
         )}
       </div>
       <AddButton />
+      <AddModal date={date} />
     </div>
   );
 };
