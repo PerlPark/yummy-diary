@@ -5,15 +5,18 @@ interface HeadlineItem {
   text: string;
 }
 
-interface LogItem {
+export interface LogItem {
   isHeadline: false;
+  image?: string;
   name: string;
   brand?: string;
   g?: number;
-  kcal?: number;
-  carbohydrate?: number;
-  protein?: number;
-  fat?: number;
+  nutrition: {
+    kcal?: number;
+    carbohydrate?: number;
+    protein?: number;
+    fat?: number;
+  };
 }
 
 export type ItemType = HeadlineItem | LogItem;
