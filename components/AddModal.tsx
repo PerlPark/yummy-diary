@@ -16,8 +16,8 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-950/20 px-4 overflow-auto z-50">
       <div className="max-w-3xl mx-auto my-4 bg-white rounded-lg shadow p-6 relative">
-        <h1 className="text-3xl font-semibold">추가하기</h1>
-        <span>{date}</span>
+        <h1 className="text-3xl font-semibold mb-3">추가하기</h1>
+        <span className="text-lg">{date}</span>
         <button
           type="button"
           onClick={closeHandler}
@@ -50,7 +50,7 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
                       </label>
                       <input
                         type="text"
-                        value={
+                        defaultValue={
                           selected.nutrition[key as keyof ItemType['nutrition']]
                         }
                         className="rounded bg-gray-100 px-3 py-1 text-sm w-24"
