@@ -12,7 +12,9 @@ const useLocalData = () => {
   }, [setData]);
 
   useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(data));
+    if (data.length > 0) {
+      localStorage.setItem('data', JSON.stringify(data));
+    }
   }, [data]);
 
   return data;

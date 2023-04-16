@@ -41,8 +41,8 @@ const DailyItem = ({
       {morning.length > 0 && (
         <div>
           <h3>아침</h3>
-          {morning.map((item) => (
-            <div key={item.name}>{item.name}</div>
+          {morning.map((item, idx) => (
+            <div key={`${item.name}-${idx}`}>{item.name}</div>
           ))}
         </div>
       )}

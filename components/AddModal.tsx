@@ -18,10 +18,16 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
   const addLog = (item: ItemType) => {
     const todayIndex = data.findIndex((v) => v.date === date);
 
-    if (todayIndex > 0) {
-      const copy = [...data];
-      copy[todayIndex].morning.push(item);
-      setData(copy);
+    const keyy = 'morning';
+
+    if (todayIndex >= 0) {
+      const copyData = [...data];
+      const newData = {
+        ...copyData[todayIndex],
+        [keyy]: [...copyData[todayIndex][keyy], item],
+      };
+      copyData[todayIndex] = newData;
+      setData(copyData);
       return;
     }
 

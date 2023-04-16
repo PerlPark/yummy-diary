@@ -22,7 +22,12 @@ export default function Home() {
         <h2 className="text-4xl font-semibold">먹었어요</h2>
         {!hasToday && <DailyItem date={today} isToday={true} />}
         {data.map((item) => (
-          <DailyItem key={item.date} date={today} morning={item.morning} />
+          <DailyItem
+            key={item.date}
+            date={today}
+            morning={item.morning}
+            isToday={item.date === today}
+          />
         ))}
       </div>
     </main>
