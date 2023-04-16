@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <main className="p-10">
-      <h1 className={`${pacifico.className} text-red-400 mb-10`}>
+      <h1 className={`${pacifico.className} text-red-400 mb-14`}>
         Yummy Diary
       </h1>
       <div className="flex flex-col gap-8">

@@ -30,7 +30,7 @@ const DailyItem = ({
 
   return (
     <div>
-      <div className="flex gap-2 items-baseline">
+      <div className="flex gap-2 items-baseline mb-4">
         <h2 className="text-2xl font-medium">{date}</h2>
         {isToday && (
           <span className="bg-red-400 rounded text-xs text-white px-1 py-0.5">
@@ -40,7 +40,7 @@ const DailyItem = ({
       </div>
       {morning.length > 0 && (
         <div>
-          <h3>아침</h3>
+          <h3 className="text-xl font-medium mb-2">아침</h3>
           {morning.map((item, idx) => (
             <div key={`${item.name}-${idx}`}>{item.name}</div>
           ))}
