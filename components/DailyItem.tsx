@@ -1,6 +1,7 @@
 import { ItemType } from '@/hooks/useGetLocalData';
 import AddButton from './AddButton';
 import AddModal from './AddModal';
+import { useState } from 'react';
 
 type DailyItemPropsType = {
   date: string;
@@ -25,6 +26,8 @@ const DailyItem = ({
   dinner = [],
   midnightSnack = [],
 }: DailyItemPropsType) => {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div>
       <div className="flex gap-2 items-baseline">
@@ -35,8 +38,10 @@ const DailyItem = ({
           </span>
         )}
       </div>
-      <AddButton />
-      <AddModal date={date} />
+      <AddButton onClick={() => setOpenModal(true)} />
+      {openModal && (
+        <AddModal date={date} closeHandler={() => setOpenModal(false)} />
+      )}
     </div>
   );
 };

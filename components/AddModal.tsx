@@ -7,15 +7,24 @@ import labels from '@/constants/labels';
 
 type AddModalPropsType = {
   date: string;
+  closeHandler: () => void;
 };
 
-const AddModal = ({ date }: AddModalPropsType) => {
+const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
   const [selected, setSelected] = useState<ItemType>();
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-950/20 px-4 overflow-auto z-50">
-      <div className="max-w-3xl mx-auto my-4 bg-white rounded-lg shadow p-6">
+      <div className="max-w-3xl mx-auto my-4 bg-white rounded-lg shadow p-6 relative">
         <h1 className="text-3xl font-semibold">추가하기</h1>
+        <span>{date}</span>
+        <button
+          type="button"
+          onClick={closeHandler}
+          className="absolute right-0 top-0"
+        >
+          닫기
+        </button>
 
         <div className="border-b border-b-gray-300 pb-4 mb-5">
           {!selected && (
@@ -83,7 +92,7 @@ const AddModal = ({ date }: AddModalPropsType) => {
             </button>
           );
         })}
-        <AddButton text="새 아이템 추가하기" />
+        <AddButton text="새 아이템 추가하기" onClick={() => {}} />
       </div>
     </div>
   );
