@@ -2,8 +2,9 @@
 import items from '@/constants/items';
 import AddButton from './AddButton';
 import { useState } from 'react';
-import { ItemType } from '@/hooks/useGetLocalData';
 import labels from '@/constants/labels';
+import { selector } from 'recoil';
+import { ItemType } from '@/recoil/data';
 
 type AddModalPropsType = {
   date: string;
@@ -12,6 +13,12 @@ type AddModalPropsType = {
 
 const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
   const [selected, setSelected] = useState<ItemType>();
+
+  const a = selector({
+    key: 'dataState',
+    get: ({ get }) => [],
+    set: ({ set }) => {},
+  });
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-950/20 px-4 overflow-auto z-50">

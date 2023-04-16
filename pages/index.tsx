@@ -1,14 +1,14 @@
 import DailyItem from '@/components/DailyItem';
-import useGetLocalData from '@/hooks/useGetLocalData';
 import dayjs from 'dayjs';
 import { Pacifico } from 'next/font/google';
 import 'dayjs/locale/ko';
+import useLocalData from '@/hooks/useLocalData';
 dayjs.locale('ko');
 
 const pacifico = Pacifico({ weight: ['400'], subsets: ['latin'] });
 
 export default function Home() {
-  const data = useGetLocalData();
+  const { data } = useLocalData();
 
   const today = dayjs().format('YYYY/MM/DD (ddd)');
   const hasToday = data[0]?.date === today;

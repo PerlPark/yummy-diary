@@ -1,4 +1,4 @@
-import { ItemType } from '@/hooks/useGetLocalData';
+import { ItemType } from '@/hooks/useLocalData';
 
 const items: { [key: number]: ItemType } = {
   1: {

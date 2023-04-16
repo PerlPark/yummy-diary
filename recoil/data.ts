@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { atom } from 'recoil';
 
 export interface ItemType {
   isHeadline: false;
@@ -25,16 +25,7 @@ interface Data {
   midnightSnack: ItemType[];
 }
 
-const useGetLocalData = () => {
-  const [data, setData] = useState<Data[]>([]);
-
-  useEffect(() => {
-    const localData = localStorage.getItem('data');
-
-    if (localData) setData(JSON.parse(localData));
-  }, []);
-
-  return data;
-};
-
-export default useGetLocalData;
+export const dataState = atom<Data[]>({
+  key: 'dataState',
+  default: [],
+});

@@ -1,4 +1,4 @@
-import { ItemType } from '@/hooks/useGetLocalData';
+import { ItemType } from '@/recoil/data';
 import AddButton from './AddButton';
 import AddModal from './AddModal';
 import { useState } from 'react';
