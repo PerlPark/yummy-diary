@@ -14,7 +14,7 @@ export interface ItemType {
   };
 }
 
-interface Data {
+export interface Data {
   date: string;
   morning: ItemType[];
   morningSnack: ItemType[];

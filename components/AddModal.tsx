@@ -3,8 +3,8 @@ import items from '@/constants/items';
 import AddButton from './AddButton';
 import { useState } from 'react';
 import labels from '@/constants/labels';
-import { selector } from 'recoil';
-import { ItemType } from '@/recoil/data';
+import { Data, ItemType, dataState } from '@/recoil/data';
+import { useRecoilState } from 'recoil';
 
 type AddModalPropsType = {
   date: string;
@@ -12,13 +12,38 @@ type AddModalPropsType = {
 };
 
 const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
+  const [data, setData] = useRecoilState(dataState);
   const [selected, setSelected] = useState<ItemType>();
 
-  const a = selector({
-    key: 'dataState',
-    get: ({ get }) => [],
-    set: ({ set }) => {},
-  });
+  const addLog = (item: ItemType) => {
+    const todayIndex = data.findIndex((v) => v.date === date);
+
+    if (todayIndex > 0) {
+      const copy = [...data];
+      copy[todayIndex].morning.push(item);
+      setData(copy);
+      return;
+    }
+
+    const newData: Data = {
+      date,
+      morning: [],
+      morningSnack: [],
+      lunch: [],
+      afternoonSnack: [],
+      midMeal: [],
+      dinner: [],
+      midnightSnack: [],
+    };
+
+    newData.morning.push(item);
+
+    setData(
+      [...data, newData].sort(
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      )
+    );
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-950/20 px-4 overflow-auto z-50">
@@ -69,6 +94,10 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
                   <button
                     type="button"
                     className="border rounded border-gray-300  w-full h-11"
+                    onClick={() => {
+                      addLog(selected);
+                      closeHandler();
+                    }}
                   >
                     등록하기
                   </button>

@@ -38,6 +38,14 @@ const DailyItem = ({
           </span>
         )}
       </div>
+      {morning.length > 0 && (
+        <div>
+          <h3>아침</h3>
+          {morning.map((item) => (
+            <div key={item.name}>{item.name}</div>
+          ))}
+        </div>
+      )}
       <AddButton onClick={() => setOpenModal(true)} />
       {openModal && (
         <AddModal date={date} closeHandler={() => setOpenModal(false)} />
