@@ -71,20 +71,27 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
           )}
           {selected && (
             <div className="flex mt-5 gap-4">
-              <img
-                src={selected.image}
-                alt=""
-                className="rounded mb-2 w-2/5 object-cover bg-slate-100"
-              />
+              <div className="w-2/5 mb-2">
+                <div
+                  className="w-full overflow-hidden relative"
+                  style={{ paddingBottom: '100%' }}
+                >
+                  <img
+                    src={selected.image}
+                    alt=""
+                    className="rounded absolute top-0 left-0 w-full h-full object-cover bg-slate-100"
+                  />
+                </div>
+              </div>
               <div>
                 <span className="text-sm text-gray-500">{selected.brand}</span>
                 <h3 className="text-xl font-medium mt-1 mb-6">
                   {selected.name}
                 </h3>
-                <div className="grid grid-cols-2 gap-x-5 gap-y-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2">
                   {Object.keys(selected.nutrition).map((key) => (
-                    <div key={key} className="flex gap-1">
-                      <label className="block w-20 text-sm font-medium">
+                    <div key={key} className="flex gap-1 grow-0">
+                      <label className="block w-20 text-sm font-medium shrink-0">
                         {labels[key]}
                       </label>
                       <input
@@ -92,7 +99,8 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
                         defaultValue={
                           selected.nutrition[key as keyof ItemType['nutrition']]
                         }
-                        className="rounded bg-gray-100 px-3 py-1 text-sm w-24"
+                        className="rounded bg-gray-100 px-3 py-1 text-sm flex-grow"
+                        style={{ width: 'calc(100% - 80px)' }}
                       />
                     </div>
                   ))}
