@@ -19,7 +19,6 @@ export default function Home() {
         Yummy Diary
       </h1>
       <div className="flex flex-col gap-8">
-        <h2 className="text-4xl font-semibold">먹었어요</h2>
         {!hasToday && <DailyItem date={today} isToday={true} />}
         {data.map((item) => (
           <DailyItem

@@ -31,7 +31,7 @@ const DailyItem = ({
   return (
     <div>
       <div className="flex gap-2 items-baseline mb-4">
-        <h2 className="text-2xl font-medium">{date}</h2>
+        <h2 className="text-2xl font-semibold">{date}</h2>
         {isToday && (
           <span className="bg-red-400 rounded text-xs text-white px-1 py-0.5">
             오늘
