@@ -17,7 +17,7 @@ const items: ItemType[] = [
   {
     index: 2,
     image:
-      'https://balanceweek-static.s3.ap-northeast-2.amazonaws.com/product_detail/%5B%E1%84%87%E1%85%A1%E1%84%85%E1%85%B3%E1%84%83%E1%85%A1%E1%86%B0%5D%E1%84%89%E1%85%A9%E1%84%89%E1%85%B3%E1%84%91%E1%85%AE%E1%86%B7%E1%84%8B%E1%85%B3%E1%86%AB%20%E1%84%83%E1%85%A1%E1%86%B0%E1%84%80%E1%85%A1%E1%84%89%E1%85%B3%E1%86%B7%E1%84%89%E1%85%A1%E1%86%AF_%E1%84%8E%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%86%E1%85%A1%E1%84%8B%E1%85%AD_%E1%84%89%E1%85%A1%E1%86%BC%E1%84%89%E1%85%A6%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B54.jpg',
+      'https://m.barudak.co.kr/web/product/big/202111/809c8ad45412e878b35caefc3c700e02.jpg',
     name: '소스품은 닭가슴살 청양마요',
     brand: '바르닭',
     g: 100,
@@ -26,6 +26,20 @@ const items: ItemType[] = [
       carbohydrate: 3,
       protein: 22,
       fat: 2.8,
+      // sugar: 3,
+      // salt: 280,
+      // transFat: 0,
+      // saturatedFat: 0.7,
+      // cholesterol: 60,
+    },
+  },
+  {
+    index: 3,
+    image: 'https://cdn.imweb.me/thumbnail/20221206/59eb114b46b30.png',
+    name: '포크 명이나물 덮밥',
+    brand: '프레퍼스',
+    nutrition: {
+      protein: 45,
     },
   },
 ];
