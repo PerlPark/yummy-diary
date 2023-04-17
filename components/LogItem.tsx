@@ -23,7 +23,7 @@ const LogItem = ({
           <img src={image} alt="" className="rounded h-full object-cover" />
         )}
       </div>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between grow">
         <div>
           <span className="text-xs text-gray-500">{brand}</span>
           <h3 className="text-sm font-medium mt-0.5">{name}</h3>
