@@ -114,7 +114,7 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
         </div>
 
         <h2 className="text-xl font-semibold mb-4">등록된 아이템</h2>
-        {Object.values(items).map((item, idx) => {
+        {items.map((item, idx) => {
           return (
             <button
               type="button"

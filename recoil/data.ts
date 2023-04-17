@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 export interface ItemType {
-  isHeadline: false;
+  index: number;
   image?: string;
   name: string;
   brand?: string;
