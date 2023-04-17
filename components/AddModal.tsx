@@ -90,7 +90,10 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2">
                   {Object.keys(selected.nutrition).map((key) => (
-                    <div key={key} className="flex gap-1 grow-0">
+                    <div
+                      key={`${selected.index}-${key}`}
+                      className="flex gap-1 grow-0"
+                    >
                       <label className="block w-20 text-sm font-medium shrink-0">
                         {labels[key]}
                       </label>
