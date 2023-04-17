@@ -17,19 +17,17 @@ const LogItem = ({
   fat,
 }: FoodItemPropsType) => {
   return (
-    <div className="flex gap-x-3">
-      <div className="rounded-md w-32 h-32 border">
+    <div className="flex gap-x-3 h-32">
+      <div className="rounded-md w-32 h-full shrink-0 border">
         {image && (
-          <img
-            src={image}
-            alt=""
-            className="rounded mb-2 h-full object-cover"
-          />
+          <img src={image} alt="" className="rounded h-full object-cover" />
         )}
       </div>
-      <div className="w-36">
-        <span className="text-xs text-gray-500">{brand}</span>
-        <h3 className="text-sm font-medium mt-0.5">{name}</h3>
+      <div className="flex flex-col justify-between">
+        <div>
+          <span className="text-xs text-gray-500">{brand}</span>
+          <h3 className="text-sm font-medium mt-0.5">{name}</h3>
+        </div>
         <div className="flex border-t border-dotted pt-2 mt-2">
           <div className="flex flex-col text-center flex-grow border-r">
             <span className="text-xs text-gray-500">탄</span>

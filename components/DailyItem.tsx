@@ -43,7 +43,7 @@ const DailyItem = ({
         <div>
           <h3 className="text-xl font-medium mb-2">아침</h3>
           <div className="my-5">총 탄수화물: / 단백질: / 지방: </div>
-          <div className="flex flex-wrap justify-between gap-8">
+          <div className="grid grid-cols-3 gap-8">
             {morning.map((item, idx) => (
               <LogItem
                 key={`${item.name}-${idx}`}
