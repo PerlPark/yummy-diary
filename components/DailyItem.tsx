@@ -2,6 +2,7 @@ import { ItemType } from '@/recoil/data';
 import AddButton from './AddButton';
 import AddModal from './AddModal';
 import { useState } from 'react';
+import LogItem from './LogItem';
 
 type DailyItemPropsType = {
   date: string;
@@ -41,9 +42,20 @@ const DailyItem = ({
       {morning.length > 0 && (
         <div>
           <h3 className="text-xl font-medium mb-2">아침</h3>
-          {morning.map((item, idx) => (
-            <div key={`${item.name}-${idx}`}>{item.name}</div>
-          ))}
+          <div className="my-5">총 탄수화물: / 단백질: / 지방: </div>
+          <div className="flex flex-wrap justify-between gap-8">
+            {morning.map((item, idx) => (
+              <LogItem
+                key={`${item.name}-${idx}`}
+                name={item.name}
+                brand={item.brand}
+                image={item.image}
+                carbohydrate={item.nutrition.carbohydrate}
+                protin={item.nutrition.protein}
+                fat={item.nutrition.fat}
+              />
+            ))}
+          </div>
         </div>
       )}
       <AddButton onClick={() => setOpenModal(true)} />
