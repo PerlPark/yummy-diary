@@ -22,4 +22,8 @@ body {
     'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     sans-serif;
   color: rgb(var(--foreground-rgb));
+  background-color: lightpink;
+  background-image: url(/bg.jpg);
+  background-size: 100px auto;
+  background-attachment: fixed;
 }

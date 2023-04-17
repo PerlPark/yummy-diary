@@ -14,9 +14,9 @@ export default function Home() {
   const hasToday = data[0]?.date === today;
 
   return (
-    <main className="p-10">
-      <h1 className={`${pacifico.className} text-red-400 mb-14`}>
-        Yummy Diary
+    <main className="py-9 px-10 w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-xl">
+      <h1 className={`${pacifico.className} text-rose-400 text-right text-xl`}>
+        ❋&nbsp;&nbsp;Yummy Diary&nbsp;&nbsp;❋
       </h1>
       <div className="flex flex-col gap-8">
         {!hasToday && <DailyItem date={today} isToday={true} />}

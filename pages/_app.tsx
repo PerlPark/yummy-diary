@@ -5,7 +5,9 @@ import { RecoilRoot } from 'recoil';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <Component {...pageProps} />
+      <div className="py-24">
+        <Component {...pageProps} />
+      </div>
     </RecoilRoot>
   );
 }

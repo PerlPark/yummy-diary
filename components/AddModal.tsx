@@ -53,8 +53,8 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-slate-950/20 px-4 overflow-auto z-50">
-      <div className="max-w-3xl mx-auto my-4 bg-white rounded-lg shadow p-6 relative">
+    <div className="fixed top-0 left-0 w-full h-full bg-slate-950/30 px-4 overflow-auto z-50">
+      <div className="max-w-3xl mx-auto my-12 bg-white rounded-lg shadow p-7 relative">
         <h1 className="text-3xl font-semibold mb-3">추가하기</h1>
         <span className="text-lg">{date}</span>
         <button
