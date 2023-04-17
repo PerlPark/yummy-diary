@@ -5,6 +5,7 @@ import { useState } from 'react';
 import labels from '@/constants/labels';
 import { Data, ItemType, dataState } from '@/recoil/data';
 import { useRecoilState } from 'recoil';
+import FoodItem from './FoodItem';
 
 type AddModalPropsType = {
   date: string;
@@ -114,26 +115,15 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
         </div>
 
         <h2 className="text-xl font-semibold mb-4">등록된 아이템</h2>
-        {items.map((item, idx) => {
-          return (
-            <button
-              type="button"
-              key={idx}
-              className="w-40 text-left hover:bg-gray-100 p-2 rounded-md"
-              onClick={() => {
-                setSelected(item);
-              }}
-            >
-              <img
-                src={item.image}
-                alt=""
-                className="rounded mb-2 h-40 object-cover"
-              />
-              <span className="text-xs text-gray-500">{item.brand}</span>
-              <h3 className="text-base font-medium mt-0.5">{item.name}</h3>
-            </button>
-          );
-        })}
+        {items.map((item) => (
+          <FoodItem
+            key={item.index}
+            name={item.name}
+            brand={item.brand}
+            image={item.image}
+            onClickHandler={() => setSelected(item)}
+          />
+        ))}
         <AddButton text="새 아이템 추가하기" onClick={() => {}} />
       </div>
     </div>
