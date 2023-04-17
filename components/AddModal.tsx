@@ -65,7 +65,7 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
           닫기
         </button>
 
-        <div className="border-b border-b-gray-300 pb-4 mb-5">
+        <div className="pb-4 mb-5">
           {!selected && (
             <div className="py-10 text-center">아이템을 선택해 주세요.</div>
           )}
@@ -79,7 +79,7 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
                   <img
                     src={selected.image}
                     alt=""
-                    className="rounded absolute top-0 left-0 w-full h-full object-cover bg-slate-100"
+                    className="rounded absolute top-0 left-0 w-full h-full object-cover border bg-slate-100"
                   />
                 </div>
               </div>
@@ -108,7 +108,7 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
                 <div className="mt-6">
                   <button
                     type="button"
-                    className="border rounded border-gray-300  w-full h-11"
+                    className="border rounded w-full h-11"
                     onClick={() => {
                       addLog(selected);
                       closeHandler();
@@ -122,16 +122,18 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
           )}
         </div>
 
-        <h2 className="text-xl font-semibold mb-4">등록된 아이템</h2>
-        {items.map((item) => (
-          <FoodItem
-            key={item.index}
-            name={item.name}
-            brand={item.brand}
-            image={item.image}
-            onClickHandler={() => setSelected(item)}
-          />
-        ))}
+        <h2 className="text-xl font-semibold mb-2">등록된 아이템</h2>
+        <div className="-mx-2">
+          {items.map((item) => (
+            <FoodItem
+              key={item.index}
+              name={item.name}
+              brand={item.brand}
+              image={item.image}
+              onClickHandler={() => setSelected(item)}
+            />
+          ))}
+        </div>
         <AddButton text="새 아이템 추가하기" onClick={() => {}} />
       </div>
     </div>
