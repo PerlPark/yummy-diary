@@ -22,7 +22,9 @@ export default function Home() {
 
   return (
     <main className="py-9 px-10 w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-xl">
-      <h1 className={`${pacifico.className} text-rose-400 text-right text-xl`}>
+      <h1
+        className={`${pacifico.className} text-rose-400 text-right text-xl sticky top-4`}
+      >
         ❋&nbsp;&nbsp;Yummy Diary&nbsp;&nbsp;❋
       </h1>
       <div className="flex flex-col gap-8">
