@@ -42,6 +42,25 @@ const items: ItemType[] = [
       protein: 45,
     },
   },
+  {
+    index: 4,
+    image:
+      'https://cdn-pro-web-241-46.cdn-nhncommerce.com/farmartist_godomall_com/data/goods/20/08/35/1000000060/1000000060_detail_037.jpg',
+    name: '구운계란득템',
+    brand: 'CU HEYROO',
+    g: 35,
+    nutrition: {
+      kcal: 60,
+      carbohydrate: 1,
+      protein: 6,
+      fat: 3.4,
+      // sugar: 0,
+      // salt: 60,
+      // transFat: 0,
+      // saturatedFat: 1.1,
+      // cholesterol: 75,
+    },
+  },
 ];
 
 export default items;
