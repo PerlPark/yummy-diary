@@ -7,6 +7,8 @@ import { Data, ItemType, dataState } from '@/recoil/data';
 import { useRecoilState } from 'recoil';
 import FoodItem from './FoodItem';
 import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import Calendar from './Calendar';
+import dayjs from 'dayjs';
 
 type AddModalPropsType = {
   date: string;
@@ -53,6 +55,10 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
     );
   };
 
+  const setDate = (date: dayjs.Dayjs) => {
+    console.log(date);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-950/30 px-4 overflow-auto z-50">
       <div className="max-w-3xl mx-auto my-12 bg-white rounded-lg shadow relative">
@@ -65,7 +71,7 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
           <XMarkIcon className="w-6 h-6" />
         </button>
 
-        <div className="border-t border-b py-4 px-7 flex gap-7">
+        <div className="border-t border-b py-4 px-7 flex gap-7 relative">
           <button
             type="button"
             className="flex font-medium items-center gap-1.5"
@@ -74,6 +80,7 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
             <CalendarIcon className="h-5 w-5 text-rose-400" />
           </button>
           <button>오전</button>
+          <Calendar onClickDate={setDate} />
         </div>
 
         <div className="px-7 py-3">
