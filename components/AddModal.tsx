@@ -19,6 +19,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
   const [selected, setSelected] = useState<ItemType>();
 
   const [date, setDate] = useState(initialDate);
+  const [openCalendar, setOpenCalendar] = useState(false);
 
   const addLog = (item: ItemType) => {
     const todayIndex = data.findIndex((v) => v.date === date);
@@ -72,12 +73,22 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
           <button
             type="button"
             className="flex font-medium items-center gap-1.5"
+            onClick={() => {
+              setOpenCalendar((v) => !v);
+            }}
           >
             <span className="">{date}</span>
             <CalendarIcon className="h-5 w-5 text-rose-400" />
           </button>
           <button>오전</button>
-          <Calendar onClickDate={setDate} />
+          {openCalendar && (
+            <Calendar
+              onClickDate={(date) => {
+                setDate(date);
+                setOpenCalendar(false);
+              }}
+            />
+          )}
         </div>
 
         <div className="px-7 py-3">
