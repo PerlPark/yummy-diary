@@ -1,7 +1,9 @@
 import { DATE_FORMAT } from '@/constants/date';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import isToday from 'dayjs/plugin/isToday';
+import { useState } from 'react';
 
 dayjs.extend(duration);
 dayjs.extend(isToday);
@@ -14,9 +16,8 @@ type CalendarPropsType = {
 const Calendar = ({ selected, onClickDate }: CalendarPropsType) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
 
-  // TODO: 년, 월 바꿀 수 있게 수정
-  const year = 2023;
-  const month = 4;
+  const [year, setYear] = useState(selected.get('year'));
+  const [month, setMonth] = useState(selected.get('month') + 1);
   const ym = `${year}-${month}`;
 
   const daysInMonth = dayjs(ym).daysInMonth();
@@ -24,9 +25,34 @@ const Calendar = ({ selected, onClickDate }: CalendarPropsType) => {
 
   return (
     <div className="absolute top-12 bg-white w-80 overflow-hidden shadow-md rounded-lg border z-20">
-      <div className="flex gap-2 border-b p-3 justify-center">
-        <button type="button">{year}년</button>/
-        <button type="button">{month}월</button>
+      <div className="flex gap-2 border-b p-3 justify-center items-center">
+        <button
+          type="button"
+          onClick={() => {
+            if (month > 1) {
+              setMonth((v) => v - 1);
+            } else {
+              setMonth(12);
+              setYear((v) => v - 1);
+            }
+          }}
+        >
+          <ChevronLeftIcon className="w-4 h-4" />
+        </button>
+        {year}년 / {month}월
+        <button
+          type="button"
+          onClick={() => {
+            if (month < 12) {
+              setMonth((v) => v + 1);
+            } else {
+              setMonth(1);
+              setYear((v) => v + 1);
+            }
+          }}
+        >
+          <ChevronRightIcon className="w-4 h-4" />
+        </button>
       </div>
       <div className="grid grid-cols-7 py-3 px-2 gap-y-3 text-center">
         {week.map((day) => (
