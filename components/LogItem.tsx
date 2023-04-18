@@ -20,7 +20,7 @@ const LogItem = ({
     <div className="flex gap-x-3 h-36">
       <div className="rounded-md w-32 h-full shrink-0 border">
         {image && (
-          <img src={image} alt="" className="rounded h-full object-cover" />
+          <img src={image} alt="" className="rounded min-h-full object-cover" />
         )}
       </div>
       <div className="flex flex-col justify-between grow">

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import items from '@/constants/items';
 import AddButton from './AddButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import labels from '@/constants/labels';
 import { Data, ItemType, dataState } from '@/recoil/data';
 import { useRecoilState } from 'recoil';
@@ -61,6 +61,14 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
       )
     );
   };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-950/30 px-4 overflow-auto z-50">
@@ -177,7 +185,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
           </div>
 
           <h2 className="text-xl font-semibold mb-2">등록된 아이템</h2>
-          <div className="-mx-2">
+          <div className="-mx-2 grid grid-cols-4">
             {items.map((item) => (
               <FoodItem
                 key={item.index}
