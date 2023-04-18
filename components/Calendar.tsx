@@ -39,7 +39,7 @@ const Calendar = ({ onClickDate }: CalendarPropsType) => {
             key={obj.date.format('YYYY-MM-DD')}
             onClick={() => onClickDate(obj.date.format(DATE_FORMAT))}
           >
-            {obj.date.format('DD')}
+            {obj.date.format('D')}
           </button>
         ))}
       </div>
