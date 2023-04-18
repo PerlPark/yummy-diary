@@ -8,6 +8,7 @@ import { useRecoilState } from 'recoil';
 import FoodItem from './FoodItem';
 import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Calendar from './Calendar';
+import dayjs from 'dayjs';
 
 type AddModalPropsType = {
   date: string;
@@ -83,6 +84,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
           <button>오전</button>
           {openCalendar && (
             <Calendar
+              selected={dayjs(date)}
               onClickDate={(date) => {
                 setDate(date);
                 setOpenCalendar(false);

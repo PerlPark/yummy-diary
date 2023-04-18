@@ -7,10 +7,11 @@ dayjs.extend(duration);
 dayjs.extend(isToday);
 
 type CalendarPropsType = {
+  selected: dayjs.Dayjs;
   onClickDate: (date: string) => void;
 };
 
-const Calendar = ({ onClickDate }: CalendarPropsType) => {
+const Calendar = ({ selected, onClickDate }: CalendarPropsType) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
 
   // TODO: 년, 월 바꿀 수 있게 수정
@@ -27,7 +28,7 @@ const Calendar = ({ onClickDate }: CalendarPropsType) => {
         <button type="button">{year}년</button>/
         <button type="button">{month}월</button>
       </div>
-      <div className="grid grid-cols-7 py-3 px-2 gap-y-2 text-center">
+      <div className="grid grid-cols-7 py-3 px-2 gap-y-3 text-center">
         {week.map((day) => (
           <div key={day}>{day}</div>
         ))}
@@ -41,9 +42,15 @@ const Calendar = ({ onClickDate }: CalendarPropsType) => {
             type="button"
             key={obj.date.format(DATE_FORMAT)}
             onClick={() => onClickDate(obj.date.format(DATE_FORMAT))}
-            className={
-              obj.date.isToday() ? 'border border-rose-300 rounded-full' : ''
-            }
+            className={`relative ${
+              obj.date.isToday()
+                ? 'relative after:content-[" "] after:block after:bg-rose-300 after:w-1 after:h-1 after:rounded-full after:absolute after:top-1 after:left-1.5'
+                : ''
+            } ${
+              selected.isSame(obj.date)
+                ? 'border border-rose-300 rounded-full relative'
+                : ''
+            }`}
           >
             {obj.date.format('D')}
           </button>
