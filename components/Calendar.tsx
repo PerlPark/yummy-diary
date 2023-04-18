@@ -10,13 +10,13 @@ type CalendarPropsType = {
 const Calendar = ({ onClickDate }: CalendarPropsType) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
 
+  // TODO: 년, 월 바꿀 수 있게 수정
   const year = 2023;
   const month = 4;
+  const ym = `${year}-${month}`;
 
-  const t = '2023-04';
-
-  const daysInMonth = dayjs(t).daysInMonth();
-  const startDay = dayjs(t).get('day');
+  const daysInMonth = dayjs(ym).daysInMonth();
+  const startDay = dayjs(ym).get('day');
 
   return (
     <div className="absolute top-12 bg-white w-80 overflow-hidden shadow-md rounded-lg border">
@@ -36,7 +36,7 @@ const Calendar = ({ onClickDate }: CalendarPropsType) => {
         })).map((obj) => (
           <button
             type="button"
-            key={obj.date.format('YYYY-MM-DD')}
+            key={obj.date.format(DATE_FORMAT)}
             onClick={() => onClickDate(obj.date.format(DATE_FORMAT))}
           >
             {obj.date.format('D')}
