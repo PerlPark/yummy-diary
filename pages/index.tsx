@@ -4,15 +4,21 @@ import { Pacifico } from 'next/font/google';
 import 'dayjs/locale/ko';
 import useLocalData from '@/hooks/useLocalData';
 import { DATE_FORMAT } from '@/constants/date';
+import { useEffect, useState } from 'react';
 dayjs.locale('ko');
 
 const pacifico = Pacifico({ weight: ['400'], subsets: ['latin'] });
 
 export default function Home() {
   const data = useLocalData();
+  const [init, setInit] = useState(false);
 
   const today = dayjs().format(DATE_FORMAT);
-  const hasToday = data[0]?.date === today;
+  const hasToday = data[0] && dayjs(data[0]?.date).isAfter(today);
+
+  useEffect(() => {
+    setInit(true);
+  }, []);
 
   return (
     <main className="py-9 px-10 w-full max-w-5xl mx-auto bg-white rounded-2xl shadow-xl">
@@ -20,7 +26,7 @@ export default function Home() {
         ❋&nbsp;&nbsp;Yummy Diary&nbsp;&nbsp;❋
       </h1>
       <div className="flex flex-col gap-8">
-        {!hasToday && <DailyItem date={today} isToday={true} />}
+        {init && !hasToday && <DailyItem date={today} isToday={true} />}
         {data.map((item) => (
           <DailyItem
             key={item.date}
