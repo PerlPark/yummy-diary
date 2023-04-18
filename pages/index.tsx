@@ -5,7 +5,10 @@ import 'dayjs/locale/ko';
 import useLocalData from '@/hooks/useLocalData';
 import { DATE_FORMAT } from '@/constants/date';
 import { useEffect, useState } from 'react';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+
 dayjs.locale('ko');
+dayjs.extend(isSameOrAfter);
 
 const pacifico = Pacifico({ weight: ['400'], subsets: ['latin'] });
 
@@ -14,7 +17,7 @@ export default function Home() {
   const [init, setInit] = useState(false);
 
   const today = dayjs().format(DATE_FORMAT);
-  const hasToday = data[0] && dayjs(data[0]?.date).isAfter(today);
+  const hasToday = data[0] && dayjs(data[0]?.date).isSameOrAfter(today);
 
   useEffect(() => {
     setInit(true);
