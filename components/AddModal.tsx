@@ -8,16 +8,17 @@ import { useRecoilState } from 'recoil';
 import FoodItem from './FoodItem';
 import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Calendar from './Calendar';
-import dayjs from 'dayjs';
 
 type AddModalPropsType = {
   date: string;
   closeHandler: () => void;
 };
 
-const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
+const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
   const [data, setData] = useRecoilState(dataState);
   const [selected, setSelected] = useState<ItemType>();
+
+  const [date, setDate] = useState(initialDate);
 
   const addLog = (item: ItemType) => {
     const todayIndex = data.findIndex((v) => v.date === date);
@@ -53,10 +54,6 @@ const AddModal = ({ date, closeHandler }: AddModalPropsType) => {
         (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
       )
     );
-  };
-
-  const setDate = (date: dayjs.Dayjs) => {
-    console.log(date);
   };
 
   return (

@@ -1,9 +1,10 @@
+import { DATE_FORMAT } from '@/constants/date';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 dayjs.extend(duration);
 
 type CalendarPropsType = {
-  onClickDate: (date: dayjs.Dayjs) => void;
+  onClickDate: (date: string) => void;
 };
 
 const Calendar = ({ onClickDate }: CalendarPropsType) => {
@@ -36,7 +37,7 @@ const Calendar = ({ onClickDate }: CalendarPropsType) => {
           <button
             type="button"
             key={obj.date.format('YYYY-MM-DD')}
-            onClick={() => onClickDate(obj.date)}
+            onClick={() => onClickDate(obj.date.format(DATE_FORMAT))}
           >
             {obj.date.format('DD')}
           </button>

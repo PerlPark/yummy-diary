@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { Pacifico } from 'next/font/google';
 import 'dayjs/locale/ko';
 import useLocalData from '@/hooks/useLocalData';
+import { DATE_FORMAT } from '@/constants/date';
 dayjs.locale('ko');
 
 const pacifico = Pacifico({ weight: ['400'], subsets: ['latin'] });
@@ -10,7 +11,7 @@ const pacifico = Pacifico({ weight: ['400'], subsets: ['latin'] });
 export default function Home() {
   const data = useLocalData();
 
-  const today = dayjs().format('YYYY/MM/DD (ddd)');
+  const today = dayjs().format(DATE_FORMAT);
   const hasToday = data[0]?.date === today;
 
   return (
@@ -23,7 +24,7 @@ export default function Home() {
         {data.map((item) => (
           <DailyItem
             key={item.date}
-            date={today}
+            date={item.date}
             morning={item.morning}
             isToday={item.date === today}
           />
