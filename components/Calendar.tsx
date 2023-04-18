@@ -1,7 +1,10 @@
 import { DATE_FORMAT } from '@/constants/date';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
+import isToday from 'dayjs/plugin/isToday';
+
 dayjs.extend(duration);
+dayjs.extend(isToday);
 
 type CalendarPropsType = {
   onClickDate: (date: string) => void;
@@ -38,6 +41,9 @@ const Calendar = ({ onClickDate }: CalendarPropsType) => {
             type="button"
             key={obj.date.format(DATE_FORMAT)}
             onClick={() => onClickDate(obj.date.format(DATE_FORMAT))}
+            className={
+              obj.date.isToday() ? 'border border-rose-300 rounded-full' : ''
+            }
           >
             {obj.date.format('D')}
           </button>
