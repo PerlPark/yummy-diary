@@ -6,7 +6,11 @@ import labels from '@/constants/labels';
 import { Data, ItemType, dataState } from '@/recoil/data';
 import { useRecoilState } from 'recoil';
 import FoodItem from './FoodItem';
-import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import {
+  CalendarIcon,
+  ChevronDownIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
 import Calendar from './Calendar';
 import dayjs from 'dayjs';
 
@@ -70,10 +74,10 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
           <XMarkIcon className="w-6 h-6" />
         </button>
 
-        <div className="border-t border-b py-4 px-7 flex gap-7 relative">
+        <div className="border-t border-b py-4 px-7 flex gap-2 relative">
           <button
             type="button"
-            className="flex font-medium items-center gap-1.5"
+            className="flex font-medium items-center gap-1.5 mr-4"
             onClick={() => {
               setOpenCalendar((v) => !v);
             }}
@@ -81,7 +85,21 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
             <span className="">{date}</span>
             <CalendarIcon className="h-5 w-5 text-rose-400" />
           </button>
-          <button>오전</button>
+          <button type="button" className="bg-rose-100 py-1 px-3 rounded">
+            아침
+          </button>
+          <button type="button" className="bg-gray-100 py-1 px-3 rounded">
+            점심
+          </button>
+          <button type="button" className="bg-gray-100 py-1 px-3 rounded">
+            저녁
+          </button>
+          <button
+            type="button"
+            className="bg-gray-100 py-1 pl-3 pr-2 rounded flex items-center gap-2"
+          >
+            기타 <ChevronDownIcon className="w-3 h-3" />
+          </button>
           {openCalendar && (
             <Calendar
               selected={dayjs(date)}
