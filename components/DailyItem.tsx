@@ -3,6 +3,7 @@ import AddButton from './AddButton';
 import AddModal from './AddModal';
 import { useState } from 'react';
 import LogItem from './LogItem';
+import items from '@/constants/items';
 
 type DailyItemPropsType = {
   date: string;
@@ -39,17 +40,17 @@ const DailyItem = ({
           </span>
         )}
       </div>
+      <div className="my-5">총 탄수화물: / 단백질: / 지방: </div>
       {morning.length > 0 && (
         <div>
           <h3 className="text-xl font-medium mb-2">아침</h3>
-          <div className="my-5">총 탄수화물: / 단백질: / 지방: </div>
           <div className="grid grid-cols-3 gap-8">
             {morning.map((item, idx) => (
               <LogItem
-                key={`${item.name}-${idx}`}
-                name={item.name}
-                brand={item.brand}
-                image={item.image}
+                key={`${date}-morning-${idx}`}
+                name={items[item.index].name}
+                brand={items[item.index].brand}
+                image={items[item.index].image}
                 carbohydrate={item.nutrition.carbohydrate}
                 protin={item.nutrition.protein}
                 fat={item.nutrition.fat}

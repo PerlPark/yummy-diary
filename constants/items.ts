@@ -2,7 +2,7 @@ import { ItemType } from '@/recoil/data';
 
 const items: ItemType[] = [
   {
-    index: 1,
+    index: 0,
     image: 'https://sitem.ssgcdn.com/34/99/33/item/1000407339934_i1_1100.jpg',
     name: '더단백 파우더 단백질 쉐이크 곡물맛',
     brand: '빙그래',
@@ -15,7 +15,7 @@ const items: ItemType[] = [
     },
   },
   {
-    index: 2,
+    index: 1,
     image:
       'https://m.barudak.co.kr/web/product/big/202111/809c8ad45412e878b35caefc3c700e02.jpg',
     name: '소스품은 닭가슴살 청양마요',
@@ -34,7 +34,7 @@ const items: ItemType[] = [
     },
   },
   {
-    index: 3,
+    index: 2,
     image: 'https://cdn.imweb.me/thumbnail/20221206/59eb114b46b30.png',
     name: '포크 명이나물 덮밥',
     brand: '프레퍼스',
@@ -43,7 +43,7 @@ const items: ItemType[] = [
     },
   },
   {
-    index: 4,
+    index: 3,
     image:
       'https://cdn-pro-web-241-46.cdn-nhncommerce.com/farmartist_godomall_com/data/goods/20/08/35/1000000060/1000000060_detail_037.jpg',
     name: '구운계란득템',
