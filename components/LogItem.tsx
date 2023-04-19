@@ -27,7 +27,7 @@ const LogItem = ({
         <div>
           <span className="text-xs text-gray-500">{brand}</span>
           <h3 className="text-sm font-medium mt-0.5">{name}</h3>
-          <span className="text-xs mt-2 font-medium">1/2개</span>
+          {/* <span className="text-xs mt-2 font-medium">1/2개</span> */}
         </div>
         <div className="flex border-t border-dotted pt-2 mt-2">
           <div className="flex flex-col text-center flex-grow border-r">
