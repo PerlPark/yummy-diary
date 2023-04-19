@@ -24,7 +24,7 @@ const Calendar = ({ selected, onClickDate }: CalendarPropsType) => {
   const startDay = dayjs(ym).get('day');
 
   return (
-    <div className="absolute top-12 bg-white w-80 overflow-hidden shadow-md rounded-lg border z-20">
+    <div className="absolute top-10 -left-5 bg-white w-80 overflow-hidden shadow-md rounded-lg border z-20">
       <div className="flex gap-2 border-b p-3 justify-center items-center">
         <button
           type="button"

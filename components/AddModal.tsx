@@ -82,16 +82,25 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
           <XMarkIcon className="w-6 h-6" />
         </button>
 
-        <div className="border-t border-b py-4 px-7 flex gap-2 relative">
+        <div className="border-t border-b py-4 px-7 flex gap-2">
           <button
             type="button"
-            className="flex font-medium items-center gap-1.5 mr-4"
+            className="flex font-medium items-center gap-1.5 mr-4 relative"
             onClick={() => {
               setOpenCalendar((v) => !v);
             }}
           >
             <span className="">{date}</span>
             <CalendarIcon className="h-5 w-5 text-rose-400" />
+            {openCalendar && (
+              <Calendar
+                selected={dayjs(date)}
+                onClickDate={(date) => {
+                  setDate(date);
+                  setOpenCalendar(false);
+                }}
+              />
+            )}
           </button>
           <button type="button" className="bg-rose-100 py-1 px-3 rounded">
             아침
@@ -108,15 +117,6 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
           >
             기타 <ChevronDownIcon className="w-3 h-3" />
           </button>
-          {openCalendar && (
-            <Calendar
-              selected={dayjs(date)}
-              onClickDate={(date) => {
-                setDate(date);
-                setOpenCalendar(false);
-              }}
-            />
-          )}
         </div>
 
         <div className="px-7 py-3">
