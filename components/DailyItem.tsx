@@ -60,9 +60,9 @@ const DailyItem = ({
                 {time.map((item, idx) => (
                   <LogItem
                     key={`${date}-morning-${idx}`}
-                    name={items[item.index].name}
-                    brand={items[item.index].brand}
-                    image={items[item.index].image}
+                    name={items[item.index]?.name}
+                    brand={items[item.index]?.brand}
+                    image={items[item.index]?.image}
                     carbohydrate={item.nutrition.carbohydrate}
                     protin={item.nutrition.protein}
                     fat={item.nutrition.fat}
