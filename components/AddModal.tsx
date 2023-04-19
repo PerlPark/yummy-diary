@@ -47,15 +47,15 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
         </button>
 
         <div className="border-t border-b py-4 px-7 flex gap-2">
-          <button
-            type="button"
-            className="flex font-medium items-center gap-1.5 mr-4 relative"
-            onClick={() => {
-              setOpenCalendar((v) => !v);
-            }}
-          >
-            <span className="">{date}</span>
-            <CalendarIcon className="h-5 w-5 text-rose-400" />
+          <div className="relative">
+            <button
+              type="button"
+              className="flex font-medium items-center gap-1.5 mr-4 "
+              onClick={() => setOpenCalendar((v) => !v)}
+            >
+              <span className="">{date}</span>
+              <CalendarIcon className="h-5 w-5 text-rose-400" />
+            </button>
             {openCalendar && (
               <Calendar
                 selected={dayjs(date)}
@@ -65,7 +65,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                 }}
               />
             )}
-          </button>
+          </div>
           <button type="button" className="bg-rose-100 py-1 px-3 rounded">
             아침
           </button>
