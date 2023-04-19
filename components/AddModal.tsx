@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import items from '@/constants/items';
-import AddButton from './AddButton';
 import { useEffect, useState } from 'react';
 import { labels } from '@/constants/labels';
 import FoodItem from './FoodItem';
-import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { CalendarIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Calendar from './Calendar';
 import dayjs from 'dayjs';
 import { ItemType } from '@/constants/types';
 import useLogData from '@/hooks/useData';
 import { timeType } from '@/recoil/data';
+import AddItemModal from './AddItemModal';
 
 type AddModalPropsType = {
   date: string;
@@ -172,6 +172,14 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
             )}
           </div>
 
+          <button
+            type="button"
+            className="w-full border rounded mb-5 h-11 flex justify-center items-center gap-2 hover:border-rose-300 hover:text-rose-500 transition-colors"
+          >
+            <PlusIcon className="w-5 h-5" /> 나만의 아이템 추가하기
+          </button>
+          <AddItemModal />
+
           <h2 className="text-xl font-semibold mb-2">등록된 아이템</h2>
           <div className="-mx-2 grid grid-cols-4">
             {items.map((item) => (
@@ -184,7 +192,6 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
               />
             ))}
           </div>
-          <AddButton text="새 아이템 추가하기" onClick={() => {}} />
         </div>
       </div>
     </div>
