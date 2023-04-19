@@ -39,7 +39,22 @@ const useLogData = () => {
     );
   };
 
-  return { setLogData };
+  const deleteLogData = (date: string, time: timeType, index: number) => {
+    const dateIndex = data.findIndex((v) => v.date === date);
+    const newTimeArrayItem = data[dateIndex][time].filter(
+      (_, i) => i !== index
+    );
+
+    const copyDate = { ...data[dateIndex] };
+    copyDate[time] = newTimeArrayItem;
+
+    const copyData = [...data];
+    copyData[dateIndex] = copyDate;
+
+    setData(copyData);
+  };
+
+  return { setLogData, deleteLogData };
 };
 
 export default useLogData;

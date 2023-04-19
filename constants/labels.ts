@@ -1,3 +1,5 @@
+import { timeType } from '@/recoil/data';
+
 export const labels: { [key: string]: string } = {
   kcal: '칼로리(kcal)',
   carbohydrate: '탄수화물(g)',
@@ -13,4 +15,14 @@ export const timeLabel = [
   '중간식',
   '저녁',
   '야식',
+];
+
+export const timeKey: timeType[] = [
+  'morning',
+  'morningSnack',
+  'lunch',
+  'afternoonSnack',
+  'midMeal',
+  'dinner',
+  'midnightSnack',
 ];

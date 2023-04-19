@@ -4,8 +4,9 @@ import { useState } from 'react';
 import LogItem from './LogItem';
 import items from '@/constants/items';
 import { LogType } from '@/constants/types';
-import { timeLabel } from '@/constants/labels';
+import { timeKey, timeLabel } from '@/constants/labels';
 import DeleteButtonMask from './DeleteButtonMask';
+import useLogData from '@/hooks/useData';
 
 type DailyItemPropsType = {
   date: string;
@@ -31,6 +32,7 @@ const DailyItem = ({
   midnightSnack = [],
 }: DailyItemPropsType) => {
   const [openModal, setOpenModal] = useState(false);
+  const { deleteLogData } = useLogData();
 
   return (
     <div>
@@ -58,12 +60,14 @@ const DailyItem = ({
               <h3 className="text-xl font-medium mb-2">{timeLabel[idx]}</h3>
               {/* <div className="grid grid-cols-3 gap-8"> */}
               <div className="grid grid-cols-4 gap-10">
-                {time.map((item, idx) => (
+                {time.map((item, itemIdx) => (
                   <div
-                    key={`${date}-morning-${idx}`}
+                    key={`${date}-${timeLabel[idx]}-${itemIdx}`}
                     className="relative group"
                   >
-                    <DeleteButtonMask />
+                    <DeleteButtonMask
+                      onClick={() => deleteLogData(date, timeKey[idx], itemIdx)}
+                    />
                     <LogItem
                       name={items[item.index]?.name}
                       brand={items[item.index]?.brand}
