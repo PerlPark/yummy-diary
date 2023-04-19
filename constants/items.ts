@@ -29,10 +29,10 @@ const items: ItemType[] = [
       protein: 22,
       fat: 2.8,
       // sugar: 3,
-      // salt: 280,
+      // salt: 280, //mg
       // transFat: 0,
       // saturatedFat: 0.7,
-      // cholesterol: 60,
+      // cholesterol: 60, //mg
     },
   },
   {
@@ -58,10 +58,69 @@ const items: ItemType[] = [
       protein: 6,
       fat: 3.4,
       // sugar: 0,
-      // salt: 60,
+      // salt: 60, //mg
       // transFat: 0,
       // saturatedFat: 1.1,
-      // cholesterol: 75,
+      // cholesterol: 75, //mg
+    },
+  },
+  {
+    index: 4,
+    image: '/images/GD_8801068914061_001.jpg',
+    name: '탄단지 모짜치킨 볼',
+    brand: '피그인더가든',
+    g: 168,
+    pcs: 1,
+    nutrition: {
+      kcal: 297,
+      carbohydrate: 17,
+      protein: 19,
+      fat: 17,
+      // sugar: 1,
+      // salt: 500, //mg
+      // transFat: 0,
+      // saturatedFat: 6,
+      // cholesterol: 40, //mg
+    },
+  },
+  {
+    index: 5,
+    image:
+      'https://m.barudak.co.kr/web/product/big/202303/cd3802ac20521d2b749bc5086e31757c.jpg',
+    name: '한입 닭가슴살 타코맛',
+    brand: '바르닭',
+    g: 100,
+    pcs: 1,
+    nutrition: {
+      kcal: 125,
+      carbohydrate: 5,
+      protein: 20,
+      fat: 2.7,
+      // sugar: 1,
+      // salt: 570, //mg
+      // transFat: 0,
+      // saturatedFat: 0.4,
+      // cholesterol: 55, //mg
+    },
+  },
+  {
+    index: 6,
+    image:
+      'https://cdn.weeat.kr/product_image/2023/02/06205007_d7a369ab933342f98d453cad8551280f.png',
+    name: '참깨 파스타',
+    brand: '위잇딜라이트',
+    g: 237,
+    pcs: 1,
+    nutrition: {
+      kcal: 500,
+      carbohydrate: 64,
+      protein: 17,
+      fat: 20,
+      // sugar: 6,
+      // salt: 740, //mg
+      // transFat: 0.5 미만,
+      // saturatedFat: 5,
+      // cholesterol: 25, //mg
     },
   },
 ];
