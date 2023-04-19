@@ -1,13 +1,12 @@
 import { LogType } from '@/constants/types';
-import { Data, dataState } from '@/recoil/data';
+import { Data, dataState, timeType } from '@/recoil/data';
 import { useRecoilState } from 'recoil';
 
 const useLogData = () => {
   const [data, setData] = useRecoilState(dataState);
 
-  const setLogData = (date: string, item: LogType) => {
+  const setLogData = (date: string, time: timeType, item: LogType) => {
     const todayIndex = data.findIndex((v) => v.date === date);
-    const time = 'morning';
 
     if (todayIndex >= 0) {
       const copyData = [...data];

@@ -4,15 +4,12 @@ import AddButton from './AddButton';
 import { useEffect, useState } from 'react';
 import labels from '@/constants/labels';
 import FoodItem from './FoodItem';
-import {
-  CalendarIcon,
-  ChevronDownIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Calendar from './Calendar';
 import dayjs from 'dayjs';
 import { ItemType } from '@/constants/types';
 import useLogData from '@/hooks/useData';
+import { timeType } from '@/recoil/data';
 
 type AddModalPropsType = {
   date: string;
@@ -25,6 +22,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
 
   const [date, setDate] = useState(initialDate);
   const [openCalendar, setOpenCalendar] = useState(false);
+  const [time, setTime] = useState<timeType>('morning');
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -66,21 +64,39 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
               />
             )}
           </div>
-          <button type="button" className="bg-rose-100 py-1 px-3 rounded">
+          <button
+            type="button"
+            className={`${
+              time === 'morning' ? 'bg-rose-100' : 'bg-gray-100'
+            } py-1 px-3 rounded`}
+            onClick={() => setTime('morning')}
+          >
             아침
           </button>
-          <button type="button" className="bg-gray-100 py-1 px-3 rounded">
+          <button
+            type="button"
+            className={`${
+              time === 'lunch' ? 'bg-rose-100' : 'bg-gray-100'
+            } py-1 px-3 rounded`}
+            onClick={() => setTime('lunch')}
+          >
             점심
           </button>
-          <button type="button" className="bg-gray-100 py-1 px-3 rounded">
+          <button
+            type="button"
+            className={`${
+              time === 'dinner' ? 'bg-rose-100' : 'bg-gray-100'
+            } py-1 px-3 rounded`}
+            onClick={() => setTime('dinner')}
+          >
             저녁
           </button>
-          <button
+          {/* <button
             type="button"
             className="bg-gray-100 py-1 pl-3 pr-2 rounded flex items-center gap-2"
           >
             기타 <ChevronDownIcon className="w-3 h-3" />
-          </button>
+          </button> */}
         </div>
 
         <div className="px-7 py-3">
@@ -136,7 +152,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                       type="button"
                       className="border rounded w-full h-11"
                       onClick={() => {
-                        setLogData(date, {
+                        setLogData(date, time, {
                           index: selected.index,
                           mode: 'auto',
                           intake: {

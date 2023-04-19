@@ -1,8 +1,7 @@
 import { LogType } from '@/constants/types';
 import { atom } from 'recoil';
 
-export interface Data {
-  date: string;
+type TimeLogDataType = {
   morning: LogType[];
   morningSnack: LogType[];
   lunch: LogType[];
@@ -10,6 +9,12 @@ export interface Data {
   midMeal: LogType[];
   dinner: LogType[];
   midnightSnack: LogType[];
+};
+
+export type timeType = keyof TimeLogDataType;
+
+export interface Data extends TimeLogDataType {
+  date: string;
 }
 
 export const dataState = atom<Data[]>({
