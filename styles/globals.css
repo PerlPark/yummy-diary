@@ -26,4 +26,6 @@ body {
   background-image: url(/bg.jpg);
   background-size: 100px auto;
   background-attachment: fixed;
+
+  min-width: 1170px;
 }
