@@ -2,7 +2,7 @@
 import items from '@/constants/items';
 import AddButton from './AddButton';
 import { useEffect, useState } from 'react';
-import labels from '@/constants/labels';
+import { labels } from '@/constants/labels';
 import FoodItem from './FoodItem';
 import { CalendarIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Calendar from './Calendar';

@@ -33,12 +33,7 @@ export default function Home() {
       <div className="flex flex-col gap-8">
         {init && !hasToday && <DailyItem date={today} isToday={true} />}
         {data.map((item) => (
-          <DailyItem
-            key={item.date}
-            date={item.date}
-            morning={item.morning}
-            isToday={item.date === today}
-          />
+          <DailyItem key={item.date} {...item} isToday={item.date === today} />
         ))}
       </div>
     </main>
