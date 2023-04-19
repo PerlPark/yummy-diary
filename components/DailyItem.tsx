@@ -5,6 +5,7 @@ import LogItem from './LogItem';
 import items from '@/constants/items';
 import { LogType } from '@/constants/types';
 import { timeLabel } from '@/constants/labels';
+import DeleteButtonMask from './DeleteButtonMask';
 
 type DailyItemPropsType = {
   date: string;
@@ -58,15 +59,20 @@ const DailyItem = ({
               {/* <div className="grid grid-cols-3 gap-8"> */}
               <div className="grid grid-cols-4 gap-10">
                 {time.map((item, idx) => (
-                  <LogItem
+                  <div
                     key={`${date}-morning-${idx}`}
-                    name={items[item.index]?.name}
-                    brand={items[item.index]?.brand}
-                    image={items[item.index]?.image}
-                    carbohydrate={item.nutrition.carbohydrate}
-                    protin={item.nutrition.protein}
-                    fat={item.nutrition.fat}
-                  />
+                    className="relative group"
+                  >
+                    <DeleteButtonMask />
+                    <LogItem
+                      name={items[item.index]?.name}
+                      brand={items[item.index]?.brand}
+                      image={items[item.index]?.image}
+                      carbohydrate={item.nutrition.carbohydrate}
+                      protin={item.nutrition.protein}
+                      fat={item.nutrition.fat}
+                    />
+                  </div>
                 ))}
               </div>
             </div>

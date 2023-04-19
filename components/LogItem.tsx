@@ -49,11 +49,6 @@ const LogItem = ({
         </div>
       </div>
     </div>
-    //   <div className="flex gap-x-3 h-36">
-
-    //   </div>
-    // </div>
-    // </div>
   );
 };
 
