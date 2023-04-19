@@ -1,4 +1,4 @@
-import { ItemType } from '@/recoil/data';
+import { ItemType } from './types';
 
 const items: ItemType[] = [
   {
@@ -7,6 +7,7 @@ const items: ItemType[] = [
     name: '더단백 파우더 단백질 쉐이크 곡물맛',
     brand: '빙그래',
     g: 32,
+    pcs: 1,
     nutrition: {
       kcal: 110,
       carbohydrate: 8,
@@ -21,6 +22,7 @@ const items: ItemType[] = [
     name: '소스품은 닭가슴살 청양마요',
     brand: '바르닭',
     g: 100,
+    pcs: 1,
     nutrition: {
       kcal: 125,
       carbohydrate: 3,
@@ -49,6 +51,7 @@ const items: ItemType[] = [
     name: '구운계란득템',
     brand: 'CU HEYROO',
     g: 35,
+    pcs: 1,
     nutrition: {
       kcal: 60,
       carbohydrate: 1,

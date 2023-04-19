@@ -1,20 +1,20 @@
-import { ItemType } from '@/recoil/data';
 import AddButton from './AddButton';
 import AddModal from './AddModal';
 import { useState } from 'react';
 import LogItem from './LogItem';
 import items from '@/constants/items';
+import { LogType } from '@/constants/types';
 
 type DailyItemPropsType = {
   date: string;
   isToday?: boolean;
-  morning?: ItemType[];
-  morningSnack?: ItemType[];
-  lunch?: ItemType[];
-  afternoonSnack?: ItemType[];
-  midMeal?: ItemType[];
-  dinner?: ItemType[];
-  midnightSnack?: ItemType[];
+  morning?: LogType[];
+  morningSnack?: LogType[];
+  lunch?: LogType[];
+  afternoonSnack?: LogType[];
+  midMeal?: LogType[];
+  dinner?: LogType[];
+  midnightSnack?: LogType[];
 };
 
 const DailyItem = ({

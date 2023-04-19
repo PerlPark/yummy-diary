@@ -3,8 +3,6 @@ import items from '@/constants/items';
 import AddButton from './AddButton';
 import { useEffect, useState } from 'react';
 import labels from '@/constants/labels';
-import { Data, ItemType, dataState } from '@/recoil/data';
-import { useRecoilState } from 'recoil';
 import FoodItem from './FoodItem';
 import {
   CalendarIcon,
@@ -13,6 +11,8 @@ import {
 } from '@heroicons/react/24/outline';
 import Calendar from './Calendar';
 import dayjs from 'dayjs';
+import { ItemType } from '@/constants/types';
+import useLogData from '@/hooks/useData';
 
 type AddModalPropsType = {
   date: string;
@@ -20,47 +20,11 @@ type AddModalPropsType = {
 };
 
 const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
-  const [data, setData] = useRecoilState(dataState);
+  const { setLogData } = useLogData();
   const [selected, setSelected] = useState<ItemType>();
 
   const [date, setDate] = useState(initialDate);
   const [openCalendar, setOpenCalendar] = useState(false);
-
-  const addLog = (item: ItemType) => {
-    const todayIndex = data.findIndex((v) => v.date === date);
-
-    const keyy = 'morning';
-
-    if (todayIndex >= 0) {
-      const copyData = [...data];
-      const newData = {
-        ...copyData[todayIndex],
-        [keyy]: [...copyData[todayIndex][keyy], item],
-      };
-      copyData[todayIndex] = newData;
-      setData(copyData);
-      return;
-    }
-
-    const newData: Data = {
-      date,
-      morning: [],
-      morningSnack: [],
-      lunch: [],
-      afternoonSnack: [],
-      midMeal: [],
-      dinner: [],
-      midnightSnack: [],
-    };
-
-    newData.morning.push(item);
-
-    setData(
-      [...data, newData].sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      )
-    );
-  };
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -172,7 +136,15 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                       type="button"
                       className="border rounded w-full h-11"
                       onClick={() => {
-                        addLog(selected);
+                        setLogData(date, {
+                          index: selected.index,
+                          mode: 'auto',
+                          intake: {
+                            amount: 1,
+                            unit: 'pcs',
+                          },
+                          nutrition: { ...selected.nutrition },
+                        });
                         closeHandler();
                       }}
                     >
