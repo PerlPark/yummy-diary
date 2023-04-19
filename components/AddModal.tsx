@@ -24,6 +24,8 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
   const [openCalendar, setOpenCalendar] = useState(false);
   const [time, setTime] = useState<timeType>('morning');
 
+  const [openAddItemModal, setOpenAddItemModal] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -175,10 +177,13 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
           <button
             type="button"
             className="w-full border rounded mb-5 h-11 flex justify-center items-center gap-2 hover:border-rose-300 hover:text-rose-500 transition-colors"
+            onClick={() => setOpenAddItemModal(true)}
           >
             <PlusIcon className="w-5 h-5" /> 나만의 아이템 추가하기
           </button>
-          <AddItemModal />
+          {openAddItemModal && (
+            <AddItemModal closeHandler={() => setOpenAddItemModal(false)} />
+          )}
 
           <h2 className="text-xl font-semibold mb-2">등록된 아이템</h2>
           <div className="-mx-2 grid grid-cols-4">

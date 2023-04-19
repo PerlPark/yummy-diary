@@ -1,7 +1,11 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
-const AddItemModal = () => {
+type AddItemModalPropsType = {
+  closeHandler: () => void;
+};
+
+const AddItemModal = ({ closeHandler }: AddItemModalPropsType) => {
   const [kcalChkbox, setKcalChkbox] = useState(false);
   const [tanChkbox, setTanChkbox] = useState(false);
   const [danChkbox, setDanChkbox] = useState(false);
@@ -15,7 +19,7 @@ const AddItemModal = () => {
         </h1>
         <button
           type="button"
-          onClick={() => {}}
+          onClick={closeHandler}
           className="absolute right-4 top-4"
         >
           <XMarkIcon className="w-6 h-6" />
