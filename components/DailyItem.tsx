@@ -55,7 +55,8 @@ const DailyItem = ({
           return (
             <div key={timeLabel[idx]} className="mb-6">
               <h3 className="text-xl font-medium mb-2">{timeLabel[idx]}</h3>
-              <div className="grid grid-cols-3 gap-8">
+              {/* <div className="grid grid-cols-3 gap-8"> */}
+              <div className="grid grid-cols-4 gap-10">
                 {time.map((item, idx) => (
                   <LogItem
                     key={`${date}-morning-${idx}`}
@@ -71,7 +72,6 @@ const DailyItem = ({
             </div>
           );
         }
-        return null;
       })}
       <AddButton onClick={() => setOpenModal(true)} />
       {openModal && (
