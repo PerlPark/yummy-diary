@@ -32,15 +32,15 @@ const LogItem = ({
         <div className="flex border-t border-dotted pt-2 mt-2">
           <div className="flex flex-col text-center flex-grow border-r">
             <span className="text-xs text-gray-500">탄</span>
-            <span className="text-sm font-medium">{carbohydrate || '-'}g</span>
+            <span className="text-sm font-medium">{carbohydrate ?? '-'}g</span>
           </div>
           <div className="flex flex-col text-center flex-grow border-r">
             <span className="text-xs text-gray-500">단</span>
-            <span className="text-sm font-medium">{protin || '-'}g</span>
+            <span className="text-sm font-medium">{protin ?? '-'}g</span>
           </div>
           <div className="flex flex-col text-center flex-grow">
             <span className="text-xs text-gray-500">지</span>
-            <span className="text-sm font-medium">{fat || '-'}g</span>
+            <span className="text-sm font-medium">{fat ?? '-'}g</span>
           </div>
         </div>
       </div>
