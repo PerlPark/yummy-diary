@@ -1,28 +1,47 @@
 {
-  "name": "yummy-diary",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@heroicons/react": "^2.0.17",
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.35",
-    "@types/react-dom": "18.0.11",
-    "autoprefixer": "10.4.14",
-    "dayjs": "^1.11.7",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
-    "next": "13.3.0",
-    "postcss": "8.4.22",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "recoil": "^0.7.7",
-    "tailwindcss": "3.3.1",
-    "typescript": "5.0.4"
-  }
+    "name": "yummy-diary",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@heroicons/react": "^2.0.17",
+        "@types/node": "18.15.11",
+        "@types/react": "18.0.35",
+        "@types/react-dom": "18.0.11",
+        "autoprefixer": "10.4.14",
+        "dayjs": "^1.11.7",
+        "eslint": "8.38.0",
+        "eslint-config-next": "13.3.0",
+        "next": "13.3.0",
+        "postcss": "8.4.22",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "recoil": "^0.7.7",
+        "tailwindcss": "3.3.1",
+        "typescript": "5.0.4"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.30.5",
+        "@typescript-eslint/parser": "^5.30.5",
+        "eslint": "^8.19.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-next": "13.0.1",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-import-resolver-typescript": "^3.5.2",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jsx-a11y": "^6.6.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-react": "^7.30.1",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "prettier": "^2.7.1",
+        "stylelint": "^14.9.1",
+        "stylelint-config-prettier-scss": "^0.0.1",
+        "stylelint-config-standard-scss": "^4.0.0",
+        "stylelint-order": "^5.0.0"
+    }
 }

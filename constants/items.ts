@@ -123,6 +123,44 @@ const items: ItemType[] = [
       // cholesterol: 25, //mg
     },
   },
+  {
+    index: 7,
+    image: '/images/IMG_6962.jpg',
+    name: '플레인 탄산수 500ml',
+    brand: '배민이지',
+    g: 500, //ml
+    pcs: 1,
+    nutrition: {
+      kcal: 0,
+      carbohydrate: 0,
+      protein: 0,
+      fat: 0,
+      // sugar: 0,
+      // salt: 0, //mg
+      // transFat: 0,
+      // saturatedFat: 0,
+      // cholesterol: 0, //mg
+    },
+  },
+  {
+    index: 8,
+    image: 'https://imagecdn.skstoa.com/goods/704/25283704_cg.jpg',
+    name: '부드러운 현미밥',
+    brand: '대왕님표 여주쌀밥',
+    g: 210,
+    pcs: 1,
+    nutrition: {
+      kcal: 310,
+      carbohydrate: 70,
+      protein: 5,
+      fat: 0.9,
+      // sugar: 0,
+      // salt: 10, //mg
+      // transFat: 0,
+      // saturatedFat: 0,
+      // cholesterol: 0, //mg
+    },
+  },
 ];
 
 export default items;
