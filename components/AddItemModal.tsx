@@ -202,7 +202,11 @@ const AddItemModal = ({ closeHandler }: AddItemModalPropsType) => {
                         <ul className="border-t mt-6 pt-3">
                             <li className="flex gap-2 mb-2 items-center">
                                 <label className=" text-sm font-medium w-24">출처</label>
-                                <input type="text" className="border rounded grow py-2 px-3 text-sm" />
+                                <input
+                                    type="text"
+                                    className="border rounded grow py-2 px-3 text-sm"
+                                    {...register('ref')}
+                                />
                             </li>
                         </ul>
                     </div>
