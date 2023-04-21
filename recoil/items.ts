@@ -3,6 +3,7 @@ import { atom } from 'recoil';
 import { ItemType } from '@/constants/types';
 
 export interface Items extends ItemType {
+    isMine: boolean;
     ref?: string;
 }
 

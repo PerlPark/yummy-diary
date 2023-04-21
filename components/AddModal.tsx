@@ -115,25 +115,29 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                                     <span className="text-sm text-gray-500">{selected.brand}</span>
                                     <h3 className="text-xl font-medium mt-1 mb-6">{selected.name}</h3>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2">
-                                        {Object.keys(selected.nutrition).map((key) => (
-                                            <div key={`${selected.index}-${key}`} className="flex gap-1 grow-0">
-                                                <label
-                                                    htmlFor={`${key}Input`}
-                                                    className="block w-20 text-sm font-medium shrink-0"
-                                                >
-                                                    {labels[key]}
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    id={`${key}Input`}
-                                                    defaultValue={
-                                                        selected.nutrition[key as keyof ItemType['nutrition']]
-                                                    }
-                                                    className="rounded bg-gray-100 px-3 py-1 text-sm flex-grow"
-                                                    style={{ width: 'calc(100% - 80px)' }}
-                                                />
-                                            </div>
-                                        ))}
+                                        {Object.keys(selected.nutrition).map((key) => {
+                                            const value = selected.nutrition[key as keyof ItemType['nutrition']];
+                                            if (value) {
+                                                return (
+                                                    <div key={`${selected.index}-${key}`} className="flex gap-1 grow-0">
+                                                        <label
+                                                            htmlFor={`${key}Input`}
+                                                            className="block w-20 text-sm font-medium shrink-0"
+                                                        >
+                                                            {labels[key]}
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            id={`${key}Input`}
+                                                            defaultValue={value}
+                                                            className="rounded bg-gray-100 px-3 py-1 text-sm flex-grow"
+                                                            style={{ width: 'calc(100% - 80px)' }}
+                                                        />
+                                                    </div>
+                                                );
+                                            }
+                                            return null;
+                                        })}
                                     </div>
                                     <div className="mt-6">
                                         <button
@@ -143,6 +147,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                                                 setLogData(date, time, {
                                                     index: selected.index,
                                                     mode: 'auto',
+                                                    isMine: selected.isMine || false,
                                                     intake: {
                                                         amount: 1,
                                                         unit: 'pcs'

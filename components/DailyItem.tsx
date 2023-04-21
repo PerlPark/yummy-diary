@@ -4,6 +4,7 @@ import items from '@/constants/items';
 import { timeKey, timeLabel } from '@/constants/labels';
 import { LogType } from '@/constants/types';
 import useLogData from '@/hooks/useData';
+import useLocalItems from '@/hooks/useLocalItems';
 
 import AddButton from './AddButton';
 import AddModal from './AddModal';
@@ -35,6 +36,7 @@ const DailyItem = ({
 }: DailyItemPropsType) => {
     const [openModal, setOpenModal] = useState(false);
     const { deleteLogData } = useLogData();
+    const userItems = useLocalItems();
 
     return (
         <div>
@@ -53,14 +55,25 @@ const DailyItem = ({
                                 {time.map((item, itemIdx) => (
                                     <div key={`${date}-${timeLabel[idx]}-${itemIdx}`} className="relative group">
                                         <DeleteButtonMask onClick={() => deleteLogData(date, timeKey[idx], itemIdx)} />
-                                        <LogItem
-                                            name={items[item.index]?.name}
-                                            brand={items[item.index]?.brand}
-                                            image={items[item.index]?.image}
-                                            carbohydrate={item.nutrition.carbohydrate}
-                                            protin={item.nutrition.protein}
-                                            fat={item.nutrition.fat}
-                                        />
+                                        {item.isMine ? (
+                                            <LogItem
+                                                name={userItems[item.index]?.name}
+                                                brand={userItems[item.index]?.brand}
+                                                image={userItems[item.index]?.image}
+                                                carbohydrate={item.nutrition.carbohydrate}
+                                                protin={item.nutrition.protein}
+                                                fat={item.nutrition.fat}
+                                            />
+                                        ) : (
+                                            <LogItem
+                                                name={items[item.index]?.name}
+                                                brand={items[item.index]?.brand}
+                                                image={items[item.index]?.image}
+                                                carbohydrate={item.nutrition.carbohydrate}
+                                                protin={item.nutrition.protein}
+                                                fat={item.nutrition.fat}
+                                            />
+                                        )}
                                     </div>
                                 ))}
                             </div>

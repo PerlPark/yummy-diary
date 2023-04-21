@@ -38,6 +38,7 @@ const AddItemModal = ({ closeHandler }: AddItemModalPropsType) => {
             name: data.name,
             brand: data.brand,
             image: data.image,
+            isMine: true,
             g: data.g,
             pcs: data.pcs,
             nutrition: {
