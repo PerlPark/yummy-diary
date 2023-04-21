@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { CalendarIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import dayjs from 'dayjs';
 
+import NoImage from '@/assets/no-image.svg';
 import items from '@/constants/items';
 import { labels } from '@/constants/labels';
 import { ItemType } from '@/constants/types';
@@ -105,9 +106,9 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                                 <div className="w-2/5 shrink-0">
                                     <div className="w-full overflow-hidden relative" style={{ paddingBottom: '100%' }}>
                                         <img
-                                            src={selected.image}
+                                            src={selected.image || NoImage.src}
                                             alt=""
-                                            className="rounded absolute top-0 left-0 w-full h-full object-cover border bg-slate-100"
+                                            className="rounded absolute top-0 left-0 w-full h-full object-cover border"
                                         />
                                     </div>
                                 </div>
@@ -186,7 +187,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                                         key={item.index}
                                         name={item.name}
                                         brand={item.brand}
-                                        image={item.image}
+                                        image={item.image || NoImage.src}
                                         onClickHandler={() => setSelected(item)}
                                     />
                                 ))}
