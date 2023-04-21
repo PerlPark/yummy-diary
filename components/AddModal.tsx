@@ -8,6 +8,7 @@ import items from '@/constants/items';
 import { labels } from '@/constants/labels';
 import { ItemType } from '@/constants/types';
 import useLogData from '@/hooks/useData';
+import useLocalItems from '@/hooks/useLocalItems';
 import { timeType } from '@/recoil/data';
 
 import AddItemModal from './AddItemModal';
@@ -21,6 +22,8 @@ type AddModalPropsType = {
 
 const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
     const { setLogData } = useLogData();
+    const userItems = useLocalItems();
+
     const [selected, setSelected] = useState<ItemType>();
 
     const [date, setDate] = useState(initialDate);
@@ -165,6 +168,23 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                         <PlusIcon className="w-5 h-5" /> 나만의 아이템 추가하기
                     </button>
                     {openAddItemModal && <AddItemModal closeHandler={() => setOpenAddItemModal(false)} />}
+
+                    {userItems.length > 0 && (
+                        <div className="mb-6">
+                            <h2 className="text-xl font-semibold mb-2">내가 추가한 아이템</h2>
+                            <div className="-mx-2 grid grid-cols-4">
+                                {userItems.map((item) => (
+                                    <FoodItem
+                                        key={item.index}
+                                        name={item.name}
+                                        brand={item.brand}
+                                        image={item.image}
+                                        onClickHandler={() => setSelected(item)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     <h2 className="text-xl font-semibold mb-2">등록된 아이템</h2>
                     <div className="-mx-2 grid grid-cols-4">

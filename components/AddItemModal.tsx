@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+import useItems from '@/hooks/useItems';
+
 type AddItemModalPropsType = {
     closeHandler: () => void;
 };
@@ -18,15 +20,36 @@ type Inputs = {
     tan?: number;
     dan?: number;
     ji?: number;
+    ref?: string;
 };
 
 const AddItemModal = ({ closeHandler }: AddItemModalPropsType) => {
+    const { items, setFoodItems } = useItems();
+
     const {
         register,
         handleSubmit,
         formState: { errors }
     } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
+    const onSubmit: SubmitHandler<Inputs> = (data) => {
+        setFoodItems({
+            index: items.length,
+            name: data.name,
+            brand: data.brand,
+            image: data.image,
+            g: data.g,
+            pcs: data.pcs,
+            nutrition: {
+                kcal: data.kcal,
+                carbohydrate: data.tan,
+                protein: data.dan,
+                fat: data.ji
+            },
+            ref: data.ref
+        });
+        closeHandler();
+    };
 
     const [kcalChkbox, setKcalChkbox] = useState(false);
     const [tanChkbox, setTanChkbox] = useState(false);
