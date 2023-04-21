@@ -102,7 +102,7 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                         {!selected && <div className="py-10 text-center">아이템을 선택해 주세요.</div>}
                         {selected && (
                             <div className="flex mt-5 gap-4">
-                                <div className="w-2/5 mb-2">
+                                <div className="w-2/5 shrink-0">
                                     <div className="w-full overflow-hidden relative" style={{ paddingBottom: '100%' }}>
                                         <img
                                             src={selected.image}
@@ -111,55 +111,58 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                                         />
                                     </div>
                                 </div>
-                                <div>
-                                    <span className="text-sm text-gray-500">{selected.brand}</span>
-                                    <h3 className="text-xl font-medium mt-1 mb-6">{selected.name}</h3>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2">
-                                        {Object.keys(selected.nutrition).map((key) => {
-                                            const value = selected.nutrition[key as keyof ItemType['nutrition']];
-                                            if (value) {
-                                                return (
-                                                    <div key={`${selected.index}-${key}`} className="flex gap-1 grow-0">
-                                                        <label
-                                                            htmlFor={`${key}Input`}
-                                                            className="block w-20 text-sm font-medium shrink-0"
+                                <div className="grow flex flex-col justify-between">
+                                    <div>
+                                        <span className="text-sm text-gray-500">{selected.brand}</span>
+                                        <h3 className="text-xl font-medium mt-1 mb-6">{selected.name}</h3>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2">
+                                            {Object.keys(selected.nutrition).map((key) => {
+                                                const value = selected.nutrition[key as keyof ItemType['nutrition']];
+                                                if (value) {
+                                                    return (
+                                                        <div
+                                                            key={`${selected.index}-${key}`}
+                                                            className="flex gap-1 grow-0"
                                                         >
-                                                            {labels[key]}
-                                                        </label>
-                                                        <input
-                                                            type="text"
-                                                            id={`${key}Input`}
-                                                            defaultValue={value}
-                                                            className="rounded bg-gray-100 px-3 py-1 text-sm flex-grow"
-                                                            style={{ width: 'calc(100% - 80px)' }}
-                                                        />
-                                                    </div>
-                                                );
-                                            }
-                                            return null;
-                                        })}
+                                                            <label
+                                                                htmlFor={`${key}Input`}
+                                                                className="block w-20 text-sm font-medium shrink-0"
+                                                            >
+                                                                {labels[key]}
+                                                            </label>
+                                                            <input
+                                                                type="text"
+                                                                id={`${key}Input`}
+                                                                defaultValue={value}
+                                                                className="rounded bg-gray-100 px-3 py-1 text-sm flex-grow"
+                                                                style={{ width: 'calc(100% - 80px)' }}
+                                                            />
+                                                        </div>
+                                                    );
+                                                }
+                                                return null;
+                                            })}
+                                        </div>
                                     </div>
-                                    <div className="mt-6">
-                                        <button
-                                            type="button"
-                                            className="border rounded w-full h-11"
-                                            onClick={() => {
-                                                setLogData(date, time, {
-                                                    index: selected.index,
-                                                    mode: 'auto',
-                                                    isMine: selected.isMine || false,
-                                                    intake: {
-                                                        amount: 1,
-                                                        unit: 'pcs'
-                                                    },
-                                                    nutrition: { ...selected.nutrition }
-                                                });
-                                                closeHandler();
-                                            }}
-                                        >
-                                            등록하기
-                                        </button>
-                                    </div>
+                                    <button
+                                        type="button"
+                                        className="border rounded w-full h-11 self-end mt-6"
+                                        onClick={() => {
+                                            setLogData(date, time, {
+                                                index: selected.index,
+                                                mode: 'auto',
+                                                isMine: selected.isMine || false,
+                                                intake: {
+                                                    amount: 1,
+                                                    unit: 'pcs'
+                                                },
+                                                nutrition: { ...selected.nutrition }
+                                            });
+                                            closeHandler();
+                                        }}
+                                    >
+                                        등록하기
+                                    </button>
                                 </div>
                             </div>
                         )}
