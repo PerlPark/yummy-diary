@@ -5,6 +5,7 @@ import { timeKey, timeLabel } from '@/constants/labels';
 import { LogType } from '@/constants/types';
 import useLogData from '@/hooks/useData';
 import useLocalItems from '@/hooks/useLocalItems';
+import calcTotal from '@/utils/calcTotal';
 
 import AddButton from './AddButton';
 import AddModal from './AddModal';
@@ -38,13 +39,34 @@ const DailyItem = ({
     const { deleteLogData } = useLogData();
     const userItems = useLocalItems();
 
+    const sum = calcTotal([morning, morningSnack, lunch, afternoonSnack, midMeal, dinner, midnightSnack]);
+
     return (
         <div>
             <div className="flex gap-2 items-baseline mb-4">
                 <h2 className="text-2xl font-semibold">{date}</h2>
                 {isToday && <span className="rounded bg-rose-400 text-xs text-white px-1 py-0.5">오늘</span>}
             </div>
-            <div className="my-5">총 탄수화물: / 단백질: / 지방: </div>
+            <div className="bg-orange-50/80 rounded-md px-5 py-4 my-5">
+                <ul className="flex gap-4 justify-center text-sm">
+                    <li className="border-r border-yellow-500/30 pr-3">
+                        <strong className="font-normal mr-2">칼로리</strong>
+                        <span className="font-semibold text-gray-500">{sum.kcal}kcal</span>
+                    </li>
+                    <li className="border-r border-yellow-500/30 pr-3">
+                        <strong className="font-normal mr-2">탄수화물</strong>
+                        <span className="font-semibold text-emerald-500">{sum.carbohydrate}g</span>
+                    </li>
+                    <li className="border-r border-yellow-500/30 pr-3">
+                        <strong className="font-normal mr-2">단백질</strong>
+                        <span className="font-semibold text-cyan-500">{sum.protein}g</span>
+                    </li>
+                    <li>
+                        <strong className="font-normal mr-2"> 지방</strong>
+                        <span className="font-semibold text-amber-500">{sum.fat}g</span>
+                    </li>
+                </ul>
+            </div>
             {[morning, morningSnack, lunch, afternoonSnack, midMeal, dinner, midnightSnack].map((time, idx) => {
                 if (time.length > 0) {
                     return (
