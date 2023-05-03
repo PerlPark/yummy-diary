@@ -9,7 +9,17 @@ const useItems = () => {
         setItems([...items, item]);
     };
 
-    return { items, setFoodItems };
+    const deleteFoodItem = (index: number) => {
+        const copyArr = [...items];
+        const copyObj = { ...copyArr[index] };
+
+        copyObj.isDeleted = true;
+        copyArr[index] = copyObj;
+
+        setItems(copyArr);
+    };
+
+    return { items, setFoodItems, deleteFoodItem };
 };
 
 export default useItems;

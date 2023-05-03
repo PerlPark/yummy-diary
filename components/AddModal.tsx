@@ -9,6 +9,7 @@ import items from '@/constants/items';
 import { labels } from '@/constants/labels';
 import { ItemType } from '@/constants/types';
 import useLogData from '@/hooks/useData';
+import useItems from '@/hooks/useItems';
 import useLocalItems from '@/hooks/useLocalItems';
 import { timeType } from '@/recoil/data';
 
@@ -24,6 +25,7 @@ type AddModalPropsType = {
 const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
     const { setLogData } = useLogData();
     const userItems = useLocalItems();
+    const { deleteFoodItem } = useItems();
 
     const [selected, setSelected] = useState<ItemType>();
 
@@ -182,15 +184,18 @@ const AddModal = ({ date: initialDate, closeHandler }: AddModalPropsType) => {
                         <div className="mb-6">
                             <h2 className="text-xl font-semibold mb-2">내가 추가한 아이템</h2>
                             <div className="-mx-2 grid grid-cols-4">
-                                {userItems.map((item) => (
-                                    <FoodItem
-                                        key={item.index}
-                                        name={item.name}
-                                        brand={item.brand}
-                                        image={item.image || NoImage.src}
-                                        onClickHandler={() => setSelected(item)}
-                                    />
-                                ))}
+                                {userItems
+                                    .filter((v) => !v.isDeleted)
+                                    .map((item) => (
+                                        <FoodItem
+                                            key={item.index}
+                                            name={item.name}
+                                            brand={item.brand}
+                                            image={item.image || NoImage.src}
+                                            onClickHandler={() => setSelected(item)}
+                                            onClickDeleteBtnHandler={() => deleteFoodItem(item.index)}
+                                        />
+                                    ))}
                             </div>
                         </div>
                     )}

@@ -4,6 +4,7 @@ import { ItemType } from '@/constants/types';
 
 export interface Items extends ItemType {
     isMine: boolean;
+    isDeleted: boolean;
     ref?: string;
 }
 

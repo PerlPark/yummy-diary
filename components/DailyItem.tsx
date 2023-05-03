@@ -56,14 +56,23 @@ const DailyItem = ({
                                     <div key={`${date}-${timeLabel[idx]}-${itemIdx}`} className="relative group">
                                         <DeleteButtonMask onClick={() => deleteLogData(date, timeKey[idx], itemIdx)} />
                                         {item.isMine ? (
-                                            <LogItem
-                                                name={userItems[item.index]?.name}
-                                                brand={userItems[item.index]?.brand}
-                                                image={userItems[item.index]?.image}
-                                                carbohydrate={item.nutrition.carbohydrate}
-                                                protin={item.nutrition.protein}
-                                                fat={item.nutrition.fat}
-                                            />
+                                            userItems[item.index].isDeleted ? (
+                                                <LogItem
+                                                    name="삭제된 아이템"
+                                                    carbohydrate={item.nutrition.carbohydrate}
+                                                    protin={item.nutrition.protein}
+                                                    fat={item.nutrition.fat}
+                                                />
+                                            ) : (
+                                                <LogItem
+                                                    name={userItems[item.index]?.name}
+                                                    brand={userItems[item.index]?.brand}
+                                                    image={userItems[item.index]?.image}
+                                                    carbohydrate={item.nutrition.carbohydrate}
+                                                    protin={item.nutrition.protein}
+                                                    fat={item.nutrition.fat}
+                                                />
+                                            )
                                         ) : (
                                             <LogItem
                                                 name={items[item.index]?.name}

@@ -47,6 +47,7 @@ const AddItemModal = ({ closeHandler }: AddItemModalPropsType) => {
                 protein: data.dan,
                 fat: data.ji
             },
+            isDeleted: false,
             ref: data.ref
         });
         closeHandler();
