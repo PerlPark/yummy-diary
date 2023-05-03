@@ -10,11 +10,13 @@ type FoodItemPropsType = {
 const FoodItem = ({ image, brand, name, onClickHandler, onClickDeleteBtnHandler }: FoodItemPropsType) => {
     return (
         <div className="relative w-full">
-            <div className="absolute right-3 top-3 px-2 pb-0.5 bg-white/70 rounded">
-                <button type="button" onClick={onClickDeleteBtnHandler} className="text-xs">
-                    삭제
-                </button>
-            </div>
+            {onClickDeleteBtnHandler && (
+                <div className="absolute right-3 top-3 px-2 pb-0.5 bg-white/70 rounded">
+                    <button type="button" onClick={onClickDeleteBtnHandler} className="text-xs">
+                        삭제
+                    </button>
+                </div>
+            )}
             <button
                 type="button"
                 className="w-full flex flex-col justify-start items-start text-left hover:bg-gray-100 p-2 rounded-md"
