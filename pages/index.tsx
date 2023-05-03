@@ -32,9 +32,22 @@ export default function Home() {
             </h1>
             <div className="flex flex-col gap-8">
                 {init && !hasToday && <DailyItem date={today} isToday />}
-                {data.map((item) => (
-                    <DailyItem key={item.date} {...item} isToday={item.date === today} />
-                ))}
+                {data.map((item) => {
+                    const isToday = item.date === today;
+                    const hasItem =
+                        isToday ||
+                        item.morning.length > 0 ||
+                        item.morningSnack.length > 0 ||
+                        item.lunch.length > 0 ||
+                        item.afternoonSnack.length > 0 ||
+                        item.midMeal.length > 0 ||
+                        item.dinner.length > 0 ||
+                        item.midnightSnack.length > 0;
+
+                    if (!hasItem) return null;
+
+                    return <DailyItem key={item.date} {...item} isToday={item.date === today} />;
+                })}
             </div>
         </main>
     );
